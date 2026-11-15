@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Operación Extracción</title>
+   <style>
+       body { margin: 0; overflow: hidden; background: #000; font-family: sans-serif; color: white; }
+
+       /* Mira */
+       #crosshair { position: fixed; top: 50%; left: 50%; width: 0; height: 0; pointer-events: none; }
+       #crosshair::before, #crosshair::after { content: ""; position: absolute; background: rgba(255,255,255,0.85); }
+       #crosshair::before { width: 14px; height: 2px; left: -7px; top: -1px; }
+       #crosshair::after { width: 2px; height: 14px; left: -1px; top: -7px; }
+
+       /* HUD */
+       #ammo { position: fixed; right: 24px; bottom: 24px; font-size: 28px; text-align: right;
+               text-shadow: 0 2px 4px black; pointer-events: none; }
+       #ammo small { font-size: 14px; opacity: 0.85; }
+       #info { position: fixed; left: 20px; top: 16px; font-size: 15px; line-height: 1.5;
+               text-shadow: 0 2px 4px black; pointer-events: none; }
+       #shield { color: #5ab0ff; font-weight: bold; }
+       #message { position: fixed; top: 22%; width: 100%; text-align: center; font-size: 26px;
+                  text-shadow: 0 2px 6px black; pointer-events: none; }
+
+       /* Pantallas */
+       .screen { position: fixed; inset: 0; display: none; flex-direction: column; align-items: center;
+                 justify-content: center; text-align: center; background: rgba(0,0,0,0.72); pointer-events: none; }
+       .screen h1 { margin: 0 0 12px; font-size: 48px; }
+       .screen p { margin: 6px 0; font-size: 18px; }
+       #pause { display: flex; }
+       #endTitle.lose { color: #ff3b30; }
+       #endTitle.win { color: #34c759; }
+   </style>
+</head>
+<body>
+   <div id="crosshair"></div>
+   <div id="info">
+       <div id="objective"></div>
+       <div id="kills"></div>
+       <div id="shield"></div>
+   </div>
+   <div id="ammo"></div>
+   <div id="message"></div>
+
+   <div id="pause" class="screen">Cargando modelos...</div>
+   <div id="end" class="screen">
+       <h1 id="endTitle"></h1>
+       <p id="endText"></p>
+       <p>Presiona <b>R</b> para reiniciar</p>
+   </div>
+
+   <script type="importmap">
+   {
+       "imports": {
+           "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+           "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+       }
+   }
+   </script>
+   <script type="module" src="./main.js"></script>
+</body>
+</html>
